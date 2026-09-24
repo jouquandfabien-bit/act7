@@ -24,4 +24,14 @@ class HashGestion:
             return sha256.hexdigest().upper()
         except FileNotFoundError:
             print("Impossible d'ouvrir le fichier.")
-            return ""
+            return 0
+
+if __name__=="__main__":
+    hasher = HashGestion()
+
+    #Hash du fichier texte README.md  
+    hash_txt = hasher.calculate_file_sha256("README.md")
+    print(f"Hash de README.md :: {hash_txt}")
+
+    hash_bin = hasher.calculate_file_sha256("../cryptoPython.zip")
+    print(f"Hash du fichier binaire: {hash_bin}")
